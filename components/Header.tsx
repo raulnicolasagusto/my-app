@@ -2,7 +2,7 @@
 import DarkModeToggle from "./DarkModeToggle";
 import Link from "next/link";
 import { BookMarkedIcon, BookOpen } from "lucide-react";
-import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
+import { SignedIn, SignedOut, SignInButton, UserButton  } from '@clerk/nextjs';
 import { Button } from "@/components/ui/button";
 import SearchInput from "./SearchInput";
 const Header = () => {
@@ -39,12 +39,12 @@ const Header = () => {
                     <DarkModeToggle /> 
 
                     <SignedIn>
-                        <Button>Cerrar Sesion</Button>
+                     <UserButton />
                     </SignedIn>
 
                     <SignedOut>
                         <SignInButton mode="modal">
-                            <Button variant="outline">Iniciar Sesión</Button>
+                            <Button variant="outline" size="default">Iniciar Sesión</Button>
                         </SignInButton>
                     </SignedOut>
                 </div>
