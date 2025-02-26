@@ -17,7 +17,7 @@ export const structure = (S: StructureBuilder) =>
                 .items([
                   // Option to edit course content
                   S.listItem()
-                    .title("Editar contenido del curso")
+                    .title("Contenido del curso")
                     .child(
                       S.document().schemaType("course").documentId(courseId)
                     ),
@@ -40,25 +40,25 @@ export const structure = (S: StructureBuilder) =>
 
       // Users
       S.listItem()
-        .title("User Management")
+        .title("Gestion de usuarios")
         .child(
           S.list()
-            .title("Select a Type of User")
+            .title("Selecciona un tipo de usuario")
             .items([
               // Instructors with options
               S.listItem()
-                .title("Instructors")
+                .title("Profesores/Instructores")
                 .schemaType("instructor")
                 .child(
                   S.documentTypeList("instructor")
-                    .title("Instructors")
+                    .title("Profesores/Instructores")
                     .child((instructorId) =>
                       S.list()
-                        .title("Instructor Options")
+                        .title("Opciones del Profesor/Instructor")
                         .items([
                           // Option to edit instructor details
                           S.listItem()
-                            .title("Edit Instructor Details")
+                            .title("Editar detalles del profesor/instructor")
                             .child(
                               S.document()
                                 .schemaType("instructor")
@@ -66,10 +66,10 @@ export const structure = (S: StructureBuilder) =>
                             ),
                           // Option to view instructor's courses
                           S.listItem()
-                            .title("View Courses")
+                            .title("Ver cursos del instructor")
                             .child(
                               S.documentList()
-                                .title("Instructor's Courses")
+                                .title("Cursos del Instructor")
                                 .filter(
                                   '_type == "course" && instructor._ref == $instructorId'
                                 )
@@ -80,18 +80,18 @@ export const structure = (S: StructureBuilder) =>
                 ),
               // Students with options
               S.listItem()
-                .title("Students")
+                .title("Estudiantes")
                 .schemaType("student")
                 .child(
                   S.documentTypeList("student")
-                    .title("Students")
+                    .title("Estudiantes")
                     .child((studentId) =>
                       S.list()
-                        .title("Student Options")
+                        .title("Opciones del Estudiante")
                         .items([
                           // Option to edit student details
                           S.listItem()
-                            .title("Edit Student Details")
+                            .title("Editar detalles del estudiante")
                             .child(
                               S.document()
                                 .schemaType("student")
@@ -99,10 +99,10 @@ export const structure = (S: StructureBuilder) =>
                             ),
                           // Option to view enrollments
                           S.listItem()
-                            .title("View Enrollments")
+                            .title("Ver matriculas")
                             .child(
                               S.documentList()
-                                .title("Student Enrollments")
+                                .title("Matriculas del Estudiante")
                                 .filter(
                                   '_type == "enrollment" && student._ref == $studentId'
                                 )
@@ -110,10 +110,10 @@ export const structure = (S: StructureBuilder) =>
                             ),
                           // Option to view completed lessons
                           S.listItem()
-                            .title("View Completed Lessons")
+                            .title("Ver cursos completadas")
                             .child(
                               S.documentList()
-                                .title("Completed Lessons")
+                                .title("Cursos completados")
                                 .schemaType("lessonCompletion")
                                 .filter(
                                   '_type == "lessonCompletion" && student._ref == $studentId'
@@ -133,10 +133,10 @@ export const structure = (S: StructureBuilder) =>
 
       // System Management
       S.listItem()
-        .title("System Management")
+        .title("Gestion del sistema")
         .child(
           S.list()
-            .title("System Management")
-            .items([S.documentTypeListItem("category").title("Categories")])
+            .title("Gestion del sistema")
+            .items([S.documentTypeListItem("category").title("Categorias")])
         ),
     ]);
